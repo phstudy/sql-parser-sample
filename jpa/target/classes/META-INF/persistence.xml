@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+
+	<!-- SQL Server 2012 -->
+	<persistence-unit name="Hibernate_SQLServer"
+		transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>org.phstudy.entity.Travel</class>
+		<properties>
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:jtds:sqlserver://localhost:49702/hibernate" />
+			<property name="javax.persistence.jdbc.driver" value="net.sourceforge.jtds.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.user" value="sa" />
+			<property name="javax.persistence.jdbc.password" value="study" />
+
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+			<!-- <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServer2008Dialect" /> -->
+			<property name="hibernate.dialect" value="org.phstudy.sample.CustomSqlServerDialect" /> 
+			<property name="hibernate.show_sql" value="true" />
+		</properties>
+	</persistence-unit>
+
+	<persistence-unit name="EclipseLink_SQLServer"
+		transaction-type="RESOURCE_LOCAL">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<class>org.phstudy.entity.Travel</class>
+		<properties>
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:jtds:sqlserver://localhost:49702/eclipselink" />
+			<property name="javax.persistence.jdbc.driver" value="net.sourceforge.jtds.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.user" value="sa" />
+			<property name="javax.persistence.jdbc.password" value="study" />
+
+			<!-- EclipseLink should create the database schema automatically -->
+			<property name="eclipselink.ddl-generation" value="create-tables" />
+			<property name="eclipselink.target-database"
+				value="org.eclipse.persistence.platform.database.SQLServerPlatform" />
+			<property name="eclipselink.ddl-generation.output-mode"
+				value="database" />
+			<property name="eclipselink.logging.level" value="FINE" />
+		</properties>
+	</persistence-unit>
+
+	<persistence-unit name="OpenJPA_SQLServer"
+		transaction-type="RESOURCE_LOCAL">
+		<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+		<class>org.phstudy.entity.Travel</class>
+		<properties>
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:jtds:sqlserver://localhost:49702/openjpa" />
+			<property name="javax.persistence.jdbc.driver" value="net.sourceforge.jtds.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.user" value="sa" />
+			<property name="javax.persistence.jdbc.password" value="study" />
+
+			<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)" />
+			<property name="openjpa.Log" value="SQL=Trace" />
+		</properties>
+	</persistence-unit>
+
+	<!-- MySQL 5 -->
+	<persistence-unit name="EclipseLink_MySQL"
+		transaction-type="RESOURCE_LOCAL">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<class>org.phstudy.entity.Travel</class>
+		<properties>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/eclipselink" />
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="study" />
+
+			<!-- EclipseLink should create the database schema automatically -->
+			<property name="eclipselink.ddl-generation" value="create-tables" />
+			<property name="eclipselink.target-database"
+				value="org.eclipse.persistence.platform.database.MySQLPlatform" />
+			<property name="eclipselink.ddl-generation.output-mode"
+				value="database" />
+			<property name="eclipselink.logging.level" value="FINE" />
+		</properties>
+	</persistence-unit>
+
+	<persistence-unit name="Hibernate_MySQL"
+		transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>org.phstudy.entity.Travel</class>
+		<properties>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/hibernate" />
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="study" />
+
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			<property name="hibernate.show_sql" value="true" />
+		</properties>
+	</persistence-unit>
+
+	<persistence-unit name="OpenJPA_MySQL"
+		transaction-type="RESOURCE_LOCAL">
+		<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+		<class>org.phstudy.entity.Travel</class>
+		<properties>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/openjpa" />
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="study" />
+
+			<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)" />
+			<property name="openjpa.Log" value="SQL=Trace" />
+		</properties>
+	</persistence-unit>
+
+
+</persistence>
